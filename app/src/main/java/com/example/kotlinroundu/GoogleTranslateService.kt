@@ -15,9 +15,9 @@ interface GoogleTranslateService {
     ): Call<TranslateResult>
 
     @POST("language/translate/v2")
-    fun getTranslatedText(
+    fun translateText(
         @Field("q") q: String,
         @Field("target") target: String,
         @Field("source") source: String
-    ): Call<TranslatedData>
+    ): Call<TranslatedResoponse>
 }

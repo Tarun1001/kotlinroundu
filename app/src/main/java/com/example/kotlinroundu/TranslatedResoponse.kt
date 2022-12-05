@@ -1,5 +1,5 @@
 package com.example.kotlinroundu
 
-data class TranslatedData(
+data class TranslatedResoponse(
     val `data`: Data
 )

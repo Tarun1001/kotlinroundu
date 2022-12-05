@@ -21,26 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         val service = ApiClient.getInstance().create(GoogleTranslateService::class.java)
 
-        val call = service.translateText(
-            text = "Hello",
-            source = "en",
-            target = "es"
+        val call: Call<TranslatedResoponse> = service.translateText(
+            "q=Hello%2C%20world!&target=es&source=en",
+            "c106642465mshc41bbbbcba77000p1a180ajsn61ecd1924dbc",
+            "google-translate1.p.rapidapi.com"
         )
-        call.enqueue(object : retrofit2.Callback<String?> {
-            override fun onResponse(call: Call<String?>, response: Response<String?>) {
-                if (response.isSuccessful) {
-
-                    }
-                }
-
-            override fun onFailure(call: Call<String?>, t: Throwable) {
-               // TODO("Not yet implemented")
-            }
-        })
-
-
-
+        val response = call.execute()
     }
+
 
 
 
