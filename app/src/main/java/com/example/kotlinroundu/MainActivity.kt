@@ -1,18 +1,17 @@
 package com.example.kotlinroundu
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
+import android.util.Log
 import android.widget.TextView
-import com.google.gson.Gson
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONException
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Response
 
-import java.io.InputStreamReader
-import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
-const val  BASE_URL="https://open.er-api.com/v6/latest/"
+//const val  BASE_URL="https://open.er-api.com/v6/latest/"
 class MainActivity : AppCompatActivity() {
 
     private  lateinit var  txtBaseCurrency:TextView
@@ -20,18 +19,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getmydata()
+        val service = ApiClient.getInstance().create(GoogleTranslateService::class.java)
+
+        val call = service.translateText(
+            text = "Hello",
+            source = "en",
+            target = "es"
+        )
+        call.enqueue(object : retrofit2.Callback<String?> {
+            override fun onResponse(call: Call<String?>, response: Response<String?>) {
+                if (response.isSuccessful) {
+
+                    }
+                }
+
+            override fun onFailure(call: Call<String?>, t: Throwable) {
+               // TODO("Not yet implemented")
+            }
+        })
 
 
 
     }
 
-    private fun getmydata() {
-      /*  val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-        retrofitBuilder.create<>(APIinterface::class.java)*/
-    }
+
 
 }
