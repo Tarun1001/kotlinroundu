@@ -1,4 +1,4 @@
-package com.example.kotlinroundu
+package com.example.kotlinroundu.trasnslator
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -17,24 +17,17 @@ import retrofit2.converter.gson.GsonConverterFactory
     }
 }*/
 class ApiClient {
-
     companion object {
-
         private lateinit var retrofit: Retrofit
-
         fun getInstance(): Retrofit {
-
-            val BASE_URL = "https://translation.googleapis.com"
-
-
-
+            val BASE_URL = "https://google-translate1.p.rapidapi.com/"
             val httpClient = OkHttpClient.Builder()
-
             retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build()).build()
-
             return retrofit
         }
+
+
     }
 }
