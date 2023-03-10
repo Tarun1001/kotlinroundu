@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         thread {
             translate()
-            //this is a change
+
+            //this is a new comment for azuredevopts
+
         }
 
 
